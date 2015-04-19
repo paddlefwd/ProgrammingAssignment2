@@ -2,8 +2,8 @@
 ## recompute the inverse multiple times.
 ##
 makeCacheMatrix <- function(x = matrix()) {
-    # Cache an invertible matrix together with its inverse and 
-    # get/set functions for putting/retrieving from the cache.
+    # Cache an invertible matrix together and define get/set 
+    # functions for putting/retrieving matrices from the cache.
     #
     # Parameters:
     #   x   The matrix to cache.
@@ -55,7 +55,6 @@ cacheSolve <- function(x, ...) {
     #
     # Return:
     #       The inverse of the cached matrix.
-    
     msg <- "Using cached inverse"
     
     # try and get the inverse matrix from the cache
