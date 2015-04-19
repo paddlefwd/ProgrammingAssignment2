@@ -47,6 +47,7 @@ makeCacheMatrix <- function(x = matrix())
          getinv = getinv)
 }
 
+
 cacheSolve <- function(x, ...)
 {
     # Solve for or retrieve the inverse of the cached matrix. 
@@ -76,7 +77,7 @@ cacheSolve <- function(x, ...)
     xinv
 }
 
-## unit test
+
 cache_test <- function()
 {
     # unit test to check the following scenarios:
