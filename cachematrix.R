@@ -1,7 +1,8 @@
 ## Cache an invertible matrix, along with its' inverse to avoid having to
 ## recompute the inverse multiple times.
 ##
-makeCacheMatrix <- function(x = matrix()) {
+makeCacheMatrix <- function(x = matrix())
+{
     # Cache an invertible matrix together and define get/set 
     # functions for putting/retrieving matrices from the cache.
     #
@@ -16,7 +17,8 @@ makeCacheMatrix <- function(x = matrix()) {
     
     # get/set the matrix
     get   <- function() m_cache
-    set   <- function(new_m) {
+    set   <- function(new_m) 
+    {
         # note if we (re)set the matrix we must null
         # out the existing inverse to force a recompute
         # next time the inverse is requested 
@@ -26,13 +28,13 @@ makeCacheMatrix <- function(x = matrix()) {
     
     # get/set the inverse
     getinv <- function() m_cache_inv
-    setinv <- function(inv) {
+    setinv <- function(inv) 
+    {
         # make sure that the provided matrix is actually the 
         # inverse of the cached matrix (the product of the 
         # current cached matrix and the potential inverse is
         # the identity matrix M*M' = I(.)
-        if (!isTRUE(all.equal((inv %*% m),diag(nrow(m_cache)))))
-        {
+        if (!isTRUE(all.equal((inv %*% m_cache),diag(nrow(m_cache))))) {
             m_inv <<- NULL
             warning("Provided matrix is not inverse for cached matrix.")
             return(NULL)
@@ -45,7 +47,8 @@ makeCacheMatrix <- function(x = matrix()) {
          getinv = getinv)
 }
 
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(x, ...)
+{
     # Solve for or retrieve the inverse of the cached matrix. 
     # If the inverse was previously computed it is used, otherwise
     # the inverse is computed, cached and returned. 
@@ -59,8 +62,7 @@ cacheSolve <- function(x, ...) {
     
     # try and get the inverse matrix from the cache
     xinv <- x$getinv()
-    if (is.null(xinv))
-    {
+    if ( is.null(xinv) ) {
         # no cached version, compute it
         xinv <- solve(x$get())
         x$setinv(xinv)
@@ -85,7 +87,8 @@ cache_test <- function()
     #       is changed
     # 5)    verify the updated inverse is cached
     
-    checkCache <- function(msg) {
+    checkCache <- function(msg) 
+    {
         # helper function to pretty print the supplied
         # message followed by:
         #   m    - the cached matrix
@@ -97,10 +100,9 @@ cache_test <- function()
         mi <- cached_m$getinv()
         cat("m = \n")
         print(m)
-        cat("\nmi = \n")
+         cat("\nmi = \n")
         print(mi)
-        if (!is.null(mi))
-        {
+        if ( ! is.null(mi) ) {
             cat("\nm%*%mi = \n")
             print(m%*%mi)
         }
