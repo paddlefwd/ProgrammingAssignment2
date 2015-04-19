@@ -3,8 +3,8 @@
 ##
 makeCacheMatrix <- function(x = matrix())
 {
-    # Cache an invertible matrix together and define get/set 
-    # functions for putting/retrieving matrices from the cache.
+    # Cache an invertible matrix and define get/set functions 
+    # for putting/retrieving matrices from the cache.
     #
     # Parameters:
     #   x   The matrix to cache.
